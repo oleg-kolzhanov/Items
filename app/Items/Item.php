@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace app\Items;
+namespace App\Items;
 
 use App\Items;
 use App\Types\Type;

@@ -5,12 +5,19 @@ namespace App\Items;
 use App\Contracts\ExtrasInterface;
 use App\Contracts\TotalPriceInterface;
 use App\Exceptions\MaxExtrasException;
+use App\Types\Types;
 
 class ItemWithExtras extends Item implements ExtrasInterface, TotalPriceInterface
 {
     protected int|false $maxExtras = 0;
 
     protected Items $extras;
+
+    public function __construct(
+    )
+    {
+        $this->extras = new Items;
+    }
 
     public function maxExtras(): int|false
     {
@@ -25,7 +32,7 @@ class ItemWithExtras extends Item implements ExtrasInterface, TotalPriceInterfac
     public function addExtra(Item $extra): void
     {
         $this->assertCanAddExtra();
-        $this->extras[] = $extra;
+        $this->extras->add($extra);
     }
 
     /**
@@ -41,10 +48,11 @@ class ItemWithExtras extends Item implements ExtrasInterface, TotalPriceInterfac
 
     private function canAddExtras(): bool
     {
-        $max = $this->maxExtras();
-        $count = $this->extras->count();
-
-        return ($max === false) || ($max > 0 && $count < $max);
+//        $max = $this->maxExtras();
+        return true;
+//        $count = $this->extras->count();
+//
+//        return ($max === false) || ($max > 0 && $count < $max);
     }
 
     public function getTotalPrice(): float

@@ -13,13 +13,31 @@ class Items implements ListInterface, TotalPriceInterface
 
     /**
      * @param Item[] $list
+     */
+    private array $list;
+
+    /**
      * @param Types $types
      */
-    public function __construct(
-        private array $list,
-        private Types $types,
-    )
+    private Types $types;
+
+    /**
+     * @param Item[] $list
+     */
+    public function __construct(array $items = [])
     {
+        $this->list = $items;
+        $this->types = new Types;
+
+        foreach ($this->list as $item) {
+            $this->types->add($item->getType());
+        }
+    }
+
+    public function add(Item $item): void
+    {
+        $this->list[] = $item;
+        $this->types->add($item->getType());
     }
 
     /**
@@ -38,7 +56,7 @@ class Items implements ListInterface, TotalPriceInterface
 
     public function getItemsByType($type): Items
     {
-        if (!$this->types->hasType($type)) {
+        if (!$this->types->has($type)) {
             return new Items([], $this->types);
         }
 

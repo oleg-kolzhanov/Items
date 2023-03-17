@@ -13,12 +13,12 @@ class Types implements ListInterface
      * @param Type[] $list
      */
     public function __construct(
-        private array $list,
+        private array $list = [],
     )
     {
     }
 
-    public function hasType(Type $type): bool
+    public function has(Type $type): bool
     {
         foreach ($this->list as $value) {
             if ($type == $value) {
@@ -26,5 +26,12 @@ class Types implements ListInterface
             };
         }
         return false;
+    }
+
+    public function add(Type $type): void
+    {
+        if (!$this->has($type)) {
+            $this->list[] = $type;
+        }
     }
 }

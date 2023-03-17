@@ -1,10 +1,10 @@
 <?php declare(strict_types=1);
 
-namespace app\Items;
+namespace App\Items;
 
 use App\Types\ControllerType;
 
-class ControllerItem extends ItemWithExtras
+class ControllerItem extends Item
 {
     public function __construct()
     {

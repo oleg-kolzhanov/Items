@@ -3,34 +3,19 @@
 namespace App;
 
 use App\Items\ConsoleItem;
-use app\Items\ControllerItem;
 use App\Items\Items;
-use app\Items\MicrowaveItem;
-use app\Items\TelevisionBigItem;
-use app\Items\TelevisionSmallItem;
-use App\Types\ConsoleType;
-use App\Types\MicrowaveType;
-use App\Types\TelevisionType;
-use App\Types\Types;
+use App\Items\MicrowaveItem;
+use App\Items\TelevisionBigItem;
+use App\Items\TelevisionSmallItem;
 
 class App
 {
     public function __invoke(): void
     {
-        $televisionType = new TelevisionType();
-        $consoleType = new ConsoleType();
-        $microwaveType = new MicrowaveType();
-
-        $types = new Types([
-            $televisionType,
-            $consoleType,
-            $microwaveType,
-        ]);
-
-        $consoleItem = new ConsoleItem();
-        $televisionBigItem = new TelevisionBigItem();
-        $televisionSmallItem = new TelevisionSmallItem();
-        $microwaveItem = new MicrowaveItem();
+        $consoleItem = new ConsoleItem;
+        $televisionBigItem = new TelevisionBigItem;
+        $televisionSmallItem = new TelevisionSmallItem;
+        $microwaveItem = new MicrowaveItem;
 
         /*
          * Создайте сценарий, в котором человек покупает:
@@ -40,23 +25,58 @@ class App
          * телевизора №1 есть 2 пульта дистанционного управления, а у телевизора №2 - 1
          * пульт.
          */
-        $purchases = new Items(
-            [
-                $consoleItem,
-                $televisionBigItem,
-                $televisionSmallItem,
-                $microwaveItem,
-            ],
-            $types
-        );
-        var_dump($purchases);
+        $purchases = new Items([
+            $consoleItem,
+            $televisionBigItem,
+            $televisionSmallItem,
+            $microwaveItem,
+        ]);
+        $this->print('PURCHASED', $purchases);
 
         /*
-         * Отсортируйте товары по цене и выведите общую цену.
+         * Отсортируйте товары по цене.
          */
         $sorted = $purchases->getSortedItems();
+        $this->print('SORTED', $sorted);
 
+        /*
+         * Выведите общую цену.
+         */
+        $totalPrice = $purchases->getTotalPrice();
+        $this->print('TOTAL PRICE', $totalPrice);
+
+        /*
+         * Друг этого человека увидел ее с новой покупкой и спросил, во сколько
+         * ей обошлась консоль и контроллеры. Дайте ответ.
+         */
         $consolePrice = $consoleItem->getTotalPrice();
+        $this->print('CONSOLE PRICE', $consolePrice);
+    }
+
+    private function print(
+        string $title,
+        mixed $purchases
+    ): void
+    {
+        print "\n\n";
+        $this->printTitle($title);
+        print_r($purchases);
+        print "\n\n";
+    }
+
+    /**
+     * @param string $title
+     * @return void
+     */
+    public function printTitle(string $title): void
+    {
+        $row = str_repeat(string: "=", times: strlen($title));
+        print $row;
+        print "\n";
+        print $title;
+        print "\n";
+        print $row;
+        print "\n\n";
     }
 }
 

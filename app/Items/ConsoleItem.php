@@ -14,19 +14,21 @@ class ConsoleItem extends ItemWithExtras
      */
     public function __construct()
     {
+        parent::__construct();
+
         $this->setPrice(100)
-            ->setType(new ConsoleType())
+            ->setType(new ConsoleType)
             ->setWired(true);
 
-        $remote1 = new RemoteItem();
-        $remote2 = new RemoteItem();
-        $controller1 = new ControllerItem();
-        $controller2 = new ControllerItem();
+        $remote1 = new RemoteItem;
+        $remote2 = new RemoteItem;
+        $controller1 = new ControllerItem;
+        $controller2 = new ControllerItem;
 
         $this->addExtra($remote1);
-        $this->addExtra($remote2);
-        $this->addExtra($controller1);
-        $this->addExtra($controller2);
+//        $this->addExtra($remote2);
+//        $this->addExtra($controller1);
+//        $this->addExtra($controller2);
 
     }
 }

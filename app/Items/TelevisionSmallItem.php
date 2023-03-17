@@ -1,8 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace app\Items;
-
-use App\Types\TelevisionType;
+namespace App\Items;
 
 class TelevisionSmallItem extends BaseTelevisionItem
 {

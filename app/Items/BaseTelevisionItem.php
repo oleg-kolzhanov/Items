@@ -1,6 +1,6 @@
 <?php declare(strict_types=1);
 
-namespace app\Items;
+namespace App\Items;
 
 use App\Exceptions\MaxExtrasException;
 use App\Types\TelevisionType;
@@ -14,6 +14,8 @@ class BaseTelevisionItem extends ItemWithExtras
      */
     public function __construct()
     {
+        parent::__construct();
+
         $this->setType(new TelevisionType())
             ->setWired(true);
 

@@ -9,15 +9,12 @@ class Types
     /**
      * @param Type[] $types
      */
-    private array $types;
-
-    public function __construct() {
-        $this->types = [
-            new TelevisionType(),
-            new ConsoleType(),
-            new MicrowaveType(),
-        ]);
+    public function __construct(
+        private array $types,
+    )
+    {
     }
+
 
     public function getIterator(): Traversable
     {
@@ -29,5 +26,16 @@ class Types
     public function asArray(): array
     {
         return $this->types;
+    }
+
+    public function hasType(Type $type): bool
+    {
+        /** @var Type $type */
+        foreach ($this->types as $value) {
+            if ($type == $value) {
+                return true;
+            };
+        }
+        return false;
     }
 }

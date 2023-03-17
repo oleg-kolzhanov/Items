@@ -78,4 +78,13 @@ class Item
         $this->wired = $wired;
         return $this;
     }
+
+    /**
+     * @param mixed $item
+     * @return float
+     */
+    public function getIntPrice(): int
+    {
+        return (int) ($this->price * 100);
+    }
 }

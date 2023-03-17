@@ -1,0 +1,22 @@
+{
+    "name": "oleg-kolzhanov/tg",
+    "type": "project",
+    "description": "Test.",
+    "keywords": ["test", "php"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

@@ -2,14 +2,14 @@
 
 namespace app\Items;
 
-use App\Types\MicrowaveType;
+use App\Types\ControllerType;
 
 class ControllerItem extends ItemWithExtras
 {
     public function __construct()
     {
         $this->setPrice(400)
-            ->setType(new MicrowaveType())
+            ->setType(new ControllerType())
             ->setWired(true);
     }
 }

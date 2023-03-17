@@ -16,5 +16,5 @@ interface ExtrasInterface
      */
     public function maxExtras(): int|false;
 
-    public function addExtra(Item $extra): int|false;
+    public function addExtra(Item $extra): void;
 }

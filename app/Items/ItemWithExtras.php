@@ -88,7 +88,7 @@ class ItemWithExtras extends Item implements ExtrasInterface
     {
         $price = $this->price;
 
-        foreach ($this->extras as $extra) {
+        foreach ($this->extras->getIterator() as $extra) {
             $price += $extra->getPrice();
         }
 

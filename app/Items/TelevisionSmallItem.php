@@ -18,5 +18,10 @@ class TelevisionSmallItem extends BaseTelevisionItem
     {
         parent::__construct();
         $this->setPrice(1000);
+
+        $remote1 = new RemoteItem();
+        $remote2 = new RemoteItem();
+        $this->addExtra($remote1);
+        $this->addExtra($remote2);
     }
 }

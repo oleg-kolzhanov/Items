@@ -1,6 +1,6 @@
 Устанавливаем зависимости:
 
-`docker run --rm --interactive --tty --volume $PWD:/app composer install`
+`docker run --rm -i --tty -v $PWD:/app composer install`
 
 Запускаем скрипт:
 

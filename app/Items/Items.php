@@ -3,7 +3,7 @@
 namespace App\Items;
 
 use App\Contracts\ListInterface;
-use App\Contracts\TotalPriceInterface;
+use App\Contracts\PriceInterface;
 use App\Traits\Listable;
 use App\Types\Type;
 use App\Types\Types;
@@ -11,7 +11,7 @@ use App\Types\Types;
 /**
  * Список электронных элементов.
  */
-class Items implements ListInterface, TotalPriceInterface
+class Items implements ListInterface, PriceInterface
 {
     use Listable;
 
@@ -58,6 +58,7 @@ class Items implements ListInterface, TotalPriceInterface
     public function getSortedItems(): Items
     {
         $sorted = array();
+        /** @var Item $item */
         foreach ($this->list as $item) {
             $sorted[($item->getIntPrice())] = $item;
         }
@@ -91,12 +92,12 @@ class Items implements ListInterface, TotalPriceInterface
      *
      * @return float
      */
-    public function getTotalPrice(): float
+    public function getPrice(): float
     {
         $price = 0;
 
         foreach ($this->list as $item) {
-            $price += $item->getTotalPrice();
+            $price += $item->getPrice();
         }
 
         return $price;

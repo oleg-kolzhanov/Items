@@ -5,14 +5,14 @@ namespace App\Contracts;
 use app\Items\Item;
 
 /**
- * Интерфейс подсчета общей стоимости.
+ * Интерфейс стоимости.
  */
-interface TotalPriceInterface
+interface PriceInterface
 {
     /**
      * Возвращает общую стоимость.
      *
      * @return float
      */
-    public function getTotalPrice(): float;
+    public function getPrice(): float;
 }

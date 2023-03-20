@@ -50,14 +50,14 @@ class App
         /*
          * Выведите общую цену.
          */
-        $totalPrice = $purchases->getTotalPrice();
+        $totalPrice = $purchases->getPrice();
         $this->print('TOTAL PRICE', $totalPrice);
 
         /*
          * Друг этого человека увидел ее с новой покупкой и спросил, во сколько
          * ей обошлась консоль и контроллеры. Дайте ответ.
          */
-        $consolePrice = $consoleItem->getTotalPrice();
+        $consolePrice = $consoleItem->getPrice();
         $this->print('CONSOLE PRICE', $consolePrice);
     }
 

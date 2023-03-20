@@ -2,13 +2,13 @@
 
 namespace App\Items;
 
-use App\Items;
+use App\Contracts\PriceInterface;
 use App\Types\Type;
 
 /**
  * Электронный элемент.
  */
-class Item
+class Item implements PriceInterface
 {
     /**
      * @var float Цена
@@ -98,6 +98,6 @@ class Item
      */
     public function getIntPrice(): int
     {
-        return (int) ($this->price * 100);
+        return (int) ($this->getPrice() * 100);
     }
 }

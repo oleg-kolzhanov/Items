@@ -3,14 +3,12 @@
 namespace App\Items;
 
 use App\Contracts\ExtrasInterface;
-use App\Contracts\TotalPriceInterface;
 use App\Exceptions\MaxExtrasException;
-use App\Types\Types;
 
 /**
  * Электронный элемент с дополнениями.
  */
-class ItemWithExtras extends Item implements ExtrasInterface, TotalPriceInterface
+class ItemWithExtras extends Item implements ExtrasInterface
 {
     /**
      * @var int|false Максимальное количество дополнений.
@@ -86,9 +84,9 @@ class ItemWithExtras extends Item implements ExtrasInterface, TotalPriceInterfac
      *
      * @return float
      */
-    public function getTotalPrice(): float
+    public function getPrice(): float
     {
-        $price = $this->getPrice();
+        $price = $this->price;
 
         foreach ($this->extras as $extra) {
             $price += $extra->getPrice();

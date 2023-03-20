@@ -6,26 +6,28 @@ use App\Items;
 use App\Types\Type;
 
 /**
- *
+ * Электронный элемент.
  */
 class Item
 {
     /**
-     * @var float
+     * @var float Цена
      */
     public float $price;
 
     /**
-     * @var Type
+     * @var Type Тип
      */
     private Type $type;
 
     /**
-     * @var bool
+     * @var bool Признак проводного элемента
      */
     public bool $wired;
 
     /**
+     * Возвращает стоимость элемента.
+     *
      * @return float
      */
     function getPrice(): float
@@ -34,6 +36,8 @@ class Item
     }
 
     /**
+     * Возвращает тип элемента.
+     *
      * @return Type
      */
     function getType(): Type
@@ -42,15 +46,19 @@ class Item
     }
 
     /**
+     * Проверяет, является ли электронный элемент проводным.
+     *
      * @return bool
      */
-    function getWired(): bool
+    function isWired(): bool
     {
         return $this->wired;
     }
 
     /**
-     * @param float $price
+     * Устанавливает цену.
+     *
+     * @param float $price Цена
      * @return $this
      */
     function setPrice(float $price): self
@@ -60,7 +68,9 @@ class Item
     }
 
     /**
-     * @param Type $type
+     * Устанавливает тип.
+     *
+     * @param Type $type Тип
      * @return $this
      */
     function setType(Type $type): self
@@ -70,7 +80,9 @@ class Item
     }
 
     /**
-     * @param bool $wired
+     * Устанавливает признак проводного электронного элемента.
+     *
+     * @param bool $wired Признак проводного электронного элемента.
      * @return $this
      */
     function setWired(bool $wired): self
@@ -80,8 +92,9 @@ class Item
     }
 
     /**
-     * @param mixed $item
-     * @return float
+     * Возвращает целочисленную стоимость в копейках.
+     *
+     * @return int
      */
     public function getIntPrice(): int
     {

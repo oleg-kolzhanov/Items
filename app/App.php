@@ -8,8 +8,16 @@ use App\Items\MicrowaveItem;
 use App\Items\TelevisionBigItem;
 use App\Items\TelevisionSmallItem;
 
+/**
+ * Приложение.
+ */
 class App
 {
+    /**
+     * Метод по умолчанию.
+     *
+     * @return void
+     */
     public function __invoke(): void
     {
         $consoleItem = new ConsoleItem;
@@ -53,19 +61,28 @@ class App
         $this->print('CONSOLE PRICE', $consolePrice);
     }
 
+    /**
+     * Выводит данные.
+     *
+     * @param string $title Заголовок
+     * @param mixed $data Данные
+     * @return void
+     */
     private function print(
         string $title,
-        mixed $purchases
+        mixed $data
     ): void
     {
         print "\n\n";
         $this->printTitle($title);
-        print_r($purchases);
+        print_r($data);
         print "\n\n";
     }
 
     /**
-     * @param string $title
+     * Выводит заголовок.
+     *
+     * @param string $title Заголовок
      * @return void
      */
     public function printTitle(string $title): void

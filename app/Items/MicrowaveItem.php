@@ -4,8 +4,14 @@ namespace App\Items;
 
 use App\Types\MicrowaveType;
 
+/**
+ * Микроволновка.
+ */
 class MicrowaveItem extends ItemWithExtras
 {
+    /**
+     * Конструктор.
+     */
     public function __construct()
     {
         parent::__construct();

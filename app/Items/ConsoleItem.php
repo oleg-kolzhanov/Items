@@ -5,12 +5,18 @@ namespace App\Items;
 use App\Exceptions\MaxExtrasException;
 use App\Types\ConsoleType;
 
+/**
+ * Консоль.
+ */
 class ConsoleItem extends ItemWithExtras
 {
+    /**
+     * @var int|false Максимальное количество дополнений.
+     */
     protected int|false $maxExtras = 4;
 
     /**
-     * @throws MaxExtrasException
+     * @throws MaxExtrasException Исключение превышения максимального количества дополнений.
      */
     public function __construct()
     {
@@ -26,9 +32,9 @@ class ConsoleItem extends ItemWithExtras
         $controller2 = new ControllerItem;
 
         $this->addExtra($remote1);
-//        $this->addExtra($remote2);
-//        $this->addExtra($controller1);
-//        $this->addExtra($controller2);
+        $this->addExtra($remote2);
+        $this->addExtra($controller1);
+        $this->addExtra($controller2);
 
     }
 }

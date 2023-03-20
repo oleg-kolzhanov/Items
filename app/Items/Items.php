@@ -5,23 +5,29 @@ namespace App\Items;
 use App\Contracts\ListInterface;
 use App\Contracts\TotalPriceInterface;
 use App\Traits\Listable;
+use App\Types\Type;
 use App\Types\Types;
 
+/**
+ * Список электронных элементов.
+ */
 class Items implements ListInterface, TotalPriceInterface
 {
     use Listable;
 
     /**
-     * @param Item[] $list
+     * @param Item[] $list Электронные элементы
      */
     private array $list;
 
     /**
-     * @param Types $types
+     * @param Types $types Список типов
      */
     private Types $types;
 
     /**
+     * Конструктор.
+     *
      * @param Item[] $list
      */
     public function __construct(array $items = [])
@@ -34,6 +40,12 @@ class Items implements ListInterface, TotalPriceInterface
         }
     }
 
+    /**
+     * Добавляет электронный элемент в список.
+     *
+     * @param Item $item Электронный элемент
+     * @return void
+     */
     public function add(Item $item): void
     {
         $this->list[] = $item;
@@ -41,7 +53,7 @@ class Items implements ListInterface, TotalPriceInterface
     }
 
     /**
-     * Returns the items depending on the sorting type requested
+     * Возвращает отсортировнный список электронных элементов.
      */
     public function getSortedItems(): Items
     {
@@ -54,7 +66,13 @@ class Items implements ListInterface, TotalPriceInterface
         return new Items(array_values($sorted), $this->types);
     }
 
-    public function getItemsByType($type): Items
+    /**
+     * Возвращает отфильтрованный по определенному типу список электронных элементов.
+     *
+     * @param Type $type Тип
+     * @return Items
+     */
+    public function getItemsByType(Type $type): Items
     {
         if (!$this->types->has($type)) {
             return new Items([], $this->types);
@@ -68,6 +86,11 @@ class Items implements ListInterface, TotalPriceInterface
         return new Items($items, $this->types);
     }
 
+    /**
+     * Возвращает полную стоимость электронного элемента со всеми дополнениями.
+     *
+     * @return float
+     */
     public function getTotalPrice(): float
     {
         $price = 0;

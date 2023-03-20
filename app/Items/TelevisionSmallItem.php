@@ -2,8 +2,18 @@
 
 namespace App\Items;
 
+use App\Exceptions\MaxExtrasException;
+
+/**
+ * Маленький телевизор.
+ */
 class TelevisionSmallItem extends BaseTelevisionItem
 {
+    /**
+     * Конструктор.
+     *
+     * @throws MaxExtrasException Исключение превышения максимального количества дополнений.
+     */
     public function __construct()
     {
         parent::__construct();

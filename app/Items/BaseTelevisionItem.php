@@ -5,12 +5,20 @@ namespace App\Items;
 use App\Exceptions\MaxExtrasException;
 use App\Types\TelevisionType;
 
+/**
+ * Базовый элемент.
+ */
 class BaseTelevisionItem extends ItemWithExtras
 {
+    /**
+     * @var int|false Максимальное количество дополнений.
+     */
     protected int|false $maxExtras = false;
 
     /**
-     * @throws MaxExtrasException
+     * Конструктор.
+     *
+     * @throws MaxExtrasException Исключение превышения максимального количества дополнений.
      */
     public function __construct()
     {
